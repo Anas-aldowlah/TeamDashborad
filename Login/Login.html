@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Mind - Login</title>
+    <!-- ✅ تم إصلاح رابط الخط (إزالة المسافات) -->
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Login.css">
+</head>
+<body class="theme-light">
+
+    <!-- ✅ زر تبديل اللغة (جديد) -->
+    <button id="langToggle" class="lang-toggle" aria-label="Switch Language">
+        <span class="lang-icon">🌐</span>
+    </button>
+
+    <!-- Theme Toggle Button -->
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+        <!-- Sun Icon -->
+        <svg class="sun-icon" viewBox="0  0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+        <!-- Moon Icon -->
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </button>
+
+    <div class="login-card">
+        <!-- Team Branding -->
+        <div class="team-brand">
+            <!-- الشعار: الشفرة الرقمية -->
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M10 17L6 13L10 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M14 7L18 11L14 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <h1>Digital Mind</h1>
+        </div>
+        <div class="subtitle" data-key="subtitle">Team Project Management System</div>
+
+        <!-- ✅ تم إضافة method و action و name attributes للتوافق مع ASP.NET MVC -->
+        <form id="loginForm" method="post" action="/Auth/Login">
+            
+            <!-- ✅ مكان مخصص لـ Anti-Forgery Token (يُفعّل في Razor) -->
+            <!-- @Html.AntiForgeryToken() -->
+
+            <label for="userSelect" class="input-label" data-key="selectName">Select Your Name</label>
+            <!-- ✅ تم إضافة name و aria-label -->
+            <select id="userSelect" name="UserName" required aria-label="Select your name">
+                <option value="">-- Choose your name --</option>
+                <option value="Anas">Anas</option>
+                <option value="Khaled">Khaled</option>
+                <option value="Mohammed">Mohammed</option>
+                <option value="Assil">Assil</option>
+            </select>
+
+            <label for="password" class="input-label" data-key="password">Password</label>
+            <div class="password-container">
+                <!-- ✅ تم إضافة name و autocomplete -->
+                <input type="password" id="password" name="Password" placeholder="Enter password" required autocomplete="current-password">
+                <button type="button" id="togglePassword" class="toggle-btn" aria-label="Toggle password visibility">👁️</button>
+            </div>
+
+            <!-- ✅ خيار "تذكرني" (اختياري) -->
+            <label class="remember-me">
+                <input type="checkbox" name="RememberMe">
+                <span data-key="remember">Remember me</span>
+            </label>
+
+            <button type="submit" id="loginBtn" data-key="signIn">Sign In</button>
+        </form>
+
+        <div class="error" id="errorMsg" role="alert" aria-live="polite"></div>
+    </div>
+
+    <script src="Login.js"></script>
+</body>
+</html>

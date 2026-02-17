@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Digital Mind Team Dashboard - Manage projects, tasks, and meetings">
+    <title>Digital Mind - Dashboard</title>
+    
+    <!-- ✅ تم إصلاح رابط الخط -->
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+</head>
+<body class="theme-light">
+
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <!-- Left: Logo -->
+        <div class="logo">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M10 17L6 13L10 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M14 7L18 11L14 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <h2>Digital Mind</h2>
+        </div>
+
+        <!-- Center: User Info + Logout -->
+        <div class="user-section">
+            <!-- ✅ تم إصلاح رابط الصورة -->
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User avatar" class="user-avatar" loading="lazy">
+            <span id="currentUsername" class="username" data-bind="username"></span>
+            
+            <!-- ✅ تم التحضير لـ ASP.NET MVC -->
+            <a href="/Auth/Logout" class="logout-btn" id="logoutBtn">Logout</a>
+        </div>
+
+        <!-- Right: Language + Theme Toggle -->
+        <div class="controls">
+            <!-- ✅ زر اللغة مع aria-label -->
+            <button id="langToggle" class="lang-toggle" aria-label="Switch Language">
+                <span class="lang-icon">🌐</span>
+            </button>
+            
+            <!-- ✅ زر الثيم مع أيقونات واضحة -->
+            <button id="themeToggle" class="theme-toggle-inline" aria-label="Toggle dark/light mode">
+                <!-- Sun Icon -->
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+                <!-- Moon Icon -->
+                <svg class="moon-icon" viewBox="0  0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-container">
+        <h1 class="page-title" data-key="dashboardTitle">Dashboard</h1>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid" role="region" aria-label="Statistics overview">
+            <article class="stat-card">
+                <h3 data-key="activeProjects">Active Projects</h3>
+                <p class="stat-value" data-bind="activeProjectsCount">4</p>
+            </article>
+            <article class="stat-card">
+                <h3 data-key="yourTasks">Your Tasks</h3>
+                <p class="stat-value" data-bind="tasksCount">7</p>
+            </article>
+            <article class="stat-card">
+                <h3 data-key="upcomingMeetings">Upcoming Meetings</h3>
+                <p class="stat-value" data-bind="meetingsCount">2</p>
+            </article>
+            <article class="stat-card">
+                <h3 data-key="teamStatus">Team Status</h3>
+                <p class="stat-value online" data-bind="teamStatus">Online</p>
+            </article>
+        </div>
+
+        <!-- Quick Actions -->
+        <section class="section">
+            <h2 data-key="quickActions">Quick Actions</h2>
+            <div class="actions-grid">
+                <button class="action-btn" data-key="newTask">+ New Task</button>
+                <button class="action-btn" data-key="newMeeting">+ New Meeting</button>
+                <a href="../Project/project.html" class="action-btn">View My Projects</a>
+            </div>
+        </section>
+
+        <!-- Recent Tasks -->
+        <section class="section">
+            <h2 data-key="recentTasks">Recent Tasks</h2>
+            <div class="tasks-list" role="list" aria-label="Recent tasks list">
+                <article class="task-item" role="listitem">
+                    <div class="task-info">
+                        <strong data-key="task1">Fix login bug</strong>
+                        <span class="task-status in-progress" data-key="inProgress">In Progress</span>
+                    </div>
+                    <span class="task-date" data-key="today">Today</span>
+                </article>
+                <article class="task-item" role="listitem">
+                    <div class="task-info">
+                        <strong data-key="task2">Update dashboard UI</strong>
+                        <span class="task-status completed" data-key="completed">Completed</span>
+                    </div>
+                    <span class="task-date">Feb 14</span>
+                </article>
+                <article class="task-item" role="listitem">
+                    <div class="task-info">
+                        <strong data-key="task3">Review PR #45</strong>
+                        <span class="task-status pending" data-key="pending">Pending</span>
+                    </div>
+                    <span class="task-date">Feb 15</span>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- ✅ مكان مخصص لـ Toast Notifications -->
+    <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
